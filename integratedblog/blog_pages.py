@@ -24,7 +24,7 @@ def show_all_published_blog_posts():
 # View a specific blog post
 @blog_pages.route('/<slug>', methods=['GET'])
 def view_blog_post(slug):
-    return render_template('view_blog_post.html',
+    return render_template('blog_view_post.html',
                            blog_post=BlogPost.get_blog_post_from_slug(slug, logged_in_admin()),
                            logged_in_admin=logged_in_admin())
 
@@ -39,7 +39,7 @@ def new_blog_post():
                                                      request.form.get('content'),
                                                      request.form.get('date_published'))
             return redirect(url_for('blog_pages.view_blog_post', slug=new_post.slug))
-    return render_template('edit_blog_post.html',
+    return render_template('blog_edit_post.html',
                            authors=Author.select(),
                            logged_in_admin=logged_in_admin())
 
@@ -55,7 +55,7 @@ def edit_blog_post(slug):
                                       request.form.get('content'),
                                       request.form.get('date_published'))
         return redirect(url_for('blog_pages.view_blog_post', slug=slug))
-    return render_template('edit_blog_post.html', edit=True,
+    return render_template('blog_edit_post.html', edit=True,
                            authors=Author.select(),
                            blog_post=BlogPost.get_blog_post_from_slug(slug, True),
                            logged_in_admin=logged_in_admin())
