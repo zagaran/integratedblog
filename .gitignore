@@ -1,0 +1,11 @@
+*.pyc
+
+# Python packages
+dist
+build
+*.egg
+*.egg-info
+
+# IDE-generated files
+.project
+.pydevproject
