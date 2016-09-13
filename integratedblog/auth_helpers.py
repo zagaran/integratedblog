@@ -8,7 +8,7 @@ SESSION_VARIABLES = ['admin_id', 'login_expiration']
 
 
 def get_oauth2_flow():
-    blog_data = current_app.config.get('blog_data')
+    blog_data = current_app.config.get('BLOG_DATA')
     redirect_uri = request.url_root[:-1] + url_for('blog_pages.oauth2callback')
     return OAuth2WebServerFlow(client_id = blog_data['oauth_client_id'],
                                client_secret = blog_data['oauth_client_secret'],
@@ -22,7 +22,7 @@ returned) """
 def try_to_log_in_from_oauth2_callback(auth_code):
     credentials = get_oauth2_flow().step2_exchange(auth_code)
     email = credentials.id_token["email"]
-    authorized_emails = current_app.config.get('blog_data')['authorized_emails']
+    authorized_emails = current_app.config.get('BLOG_DATA')['authorized_emails']
     if email in authorized_emails:
         set_logged_in_admin(email)
         return True, email

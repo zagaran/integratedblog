@@ -26,7 +26,7 @@ Easy blog add-on for Python Flask web apps.  Most blogs are designed to work as 
     from integratedblog.data_models import set_up_blog_db
     ...
     # Anywhere after you've defined "app":
-    app.config['blog_data'] = {
+    app.config['BLOG_DATA'] = {
         'authorized_emails': set(["example@gmail.com", "example@example.com"]),  # Blog administrators with these Gmail addresses can log in
         'oauth_client_id': GOOGLE_OAUTH_CLIENT_ID,                               # Get this from step 2
         'oauth_client_secret': GOOGLE_OAUTH_CLIENT_SECRET                        # Get this from step 2
