@@ -78,9 +78,13 @@ class BlogPost(BaseModel):
                             "wiki-tables"]
         return Markup(markdown(self.content, extras=markdown_filters))
     
+    """ Give a plain-text preview of the content, not more than 100 characters,
+    ending with a complete word and an ellipsis """
     @property
     def content_preview(self):
-        return un_format(self.content[:100])
+        first_100_chars = un_format(self.content[:400])[:100]
+        position_of_last_space = first_100_chars.rfind(' ')
+        return first_100_chars[:position_of_last_space] + "..."
 
 
 def set_up_blog_db(sqlite_database_filepath):
