@@ -11,13 +11,13 @@ Easy blog add-on for Python Flask web apps.  Most blogs are designed to work as 
 
 ## Setup
 
-1. **Install using pip**: `pip install integrated blog`  (Note: this is not yet publicly on pip; you need to clone this repo, `cd` into it, and run `python setup.py install`)
+1. **Install using pip**: `pip install integratedblog`  (Note: this is not yet publicly on pip; you need to clone this repo, `cd` into it, and run `python setup.py install`)
 
 2. **Set up a Google OAuth client for logging in to your blog**: Go to the Google APIs _API Manager_ -> _Credentials_ (https://console.developers.google.com/apis/credentials).  Click _Create Credentials_ -> _OAuth client ID_ -> _Web application_.
 
-  1. Grab the Client ID and Client Secret- you'll use them in Step 3
+    1. Grab the Client ID and Client Secret- you'll use them in Step 3
   
-  2. Fill in _Authorized Redirect URIs_ with your website's URL, and with any URLs you'll use for development and testing.  For example, `http://example.com/blog/admin/oauth2callback` and `http://localhost:5000/blog/admin/oauth2callback`.  Replace the word `blog` in `/blog/admin/oauth2callback` with whatever you want the URL extension of your blog to be: for example, `/my_awesome_blog/admin/oauth2callback`.  See in Step 3 how to customize the URL extension.
+    2. Fill in _Authorized Redirect URIs_ with your website's URL, and with any URLs you'll use for development and testing.  For example, `http://example.com/blog/admin/oauth2callback` and `http://localhost:5000/blog/admin/oauth2callback`.  Replace the word `blog` in `/blog/admin/oauth2callback` with whatever you want the URL extension of your blog to be: for example, `/my_awesome_blog/admin/oauth2callback`.  See in Step 3 how to customize the URL extension.
 
 3. **Add configuration steps to your `app.py` file**:
 
@@ -37,4 +37,12 @@ Easy blog add-on for Python Flask web apps.  Most blogs are designed to work as 
 
 4. **Add template files for the blog pages**
 
-5. **You're ready to blog!** Log in by going to `example.com/blog/admin/login`, create at least one blog author, and create a post.
+5. **Create authors**: open an `ipython` terminal, and in it, do the following:
+
+   ```
+   In [1]: from integratedblog.data_models import Author, set_up_blog_db
+   In [2]: set_up_blog_db('/filepath/of/database.db')
+   In [3]: Author.create(name="Washington Irving")  # Do this for every Author you want to create
+   ```
+
+6. **You're ready to blog!** Log in by going to `example.com/blog/admin/login`, click "Create new blog post", and check that the list of authors you created has correctly populated the dropdown.
