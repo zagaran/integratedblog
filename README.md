@@ -21,7 +21,7 @@ Easy blog add-on for Python Flask web apps.  Most blogs are designed to work as 
 
 3. **Add configuration steps to your `app.py` file**:
 
-    ```
+    ```python
     from integratedblog.blog_pages import blog_pages
     from integratedblog.data_models import set_up_blog_db
     ...
@@ -39,7 +39,7 @@ Easy blog add-on for Python Flask web apps.  Most blogs are designed to work as 
 
 5. **Create authors**: open an `ipython` terminal, and in it, do the following:
 
-   ```
+   ```python
    In [1]: from integratedblog.data_models import Author, set_up_blog_db
    In [2]: set_up_blog_db('/filepath/of/database.db')
    In [3]: Author.create(name="Washington Irving")  # Do this for every Author you want to create
