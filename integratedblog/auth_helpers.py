@@ -58,6 +58,6 @@ def require_admin_login(f):
         if logged_in_admin():
             return f(*args, **kwargs)
         else:
-            print "Someone tried to access %s while not logged in" % request.url_rule
+            print("Someone tried to access %s while not logged in" % request.url_rule)
             abort(404)
     return require_admin_login_wrapper

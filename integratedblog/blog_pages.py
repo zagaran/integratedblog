@@ -1,8 +1,8 @@
-from auth_helpers import clear_logged_in_admin, get_oauth2_flow, \
-    logged_in_admin, require_admin_login, try_to_log_in_from_oauth2_callback
-from data_models import Author, BlogPost
 from flask import Blueprint, redirect, render_template, request, url_for
 from playhouse.flask_utils import get_object_or_404
+from integratedblog.auth_helpers import clear_logged_in_admin, get_oauth2_flow, \
+    logged_in_admin, require_admin_login, try_to_log_in_from_oauth2_callback
+from integratedblog.data_models import Author, BlogPost
 
 blog_pages = Blueprint("blog_pages", __name__)
 
