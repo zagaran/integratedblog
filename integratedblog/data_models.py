@@ -1,4 +1,4 @@
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 from datetime import datetime
 from dateutil.parser import parse
 from flask import abort, Markup
